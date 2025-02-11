@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Surah Bayyinah</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #f4f4f4;
+            
+        }
+
+        h1 {
+            margin: 20px 0;
+            font-size: 2rem;
+            color: #2c3e50;
+            text-align: center;
+        }
+
+        #surahImage {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        
+        #surahImage2 {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        img {
+            width: 100%;
+            height: auto;
+        }
+
+        .ayah {
+            position: absolute;
+            background-color: transparent;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .ayah:hover {
+            background-color: rgba(255, 255, 0, 0.3);
+        }
+
+        #audioControls {
+            width: 100%;
+            max-width: 600px;
+            margin: 20px auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        #customAudioPlayer {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+
+        #playPauseBtn {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        #seekBar {
+            flex-grow: 1;
+            margin: 0 15px;
+            -webkit-appearance: none;
+            height: 5px;
+            background: #d3d3d3;
+            outline: none;
+            border-radius: 5px;
+        }
+
+        #seekBar::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 15px;
+            height: 15px;
+            background: #3498db;
+            cursor: pointer;
+            border-radius: 50%;
+        }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 34px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .slider {
+            background-color: #2196F3;
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+
+        #repeatControl {
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        #repeatControl span {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Surah Al-shams</h1>
+
+<!-- Audio Controls -->
+<div id="audioControls">
+    <div id="customAudioPlayer">
+        <button id="playPauseBtn">Play</button>
+        <input type="range" id="seekBar" value="0">
+    </div>
+    <div id="repeatControl">
+        <span>No Repeat</span>
+        <label class="switch">
+            <input type="checkbox" id="repeatToggle">
+            <span class="slider"></span>
+        </label>
+        <span>Repeat</span>
+    </div>
+</div>
+
+<!-- Surah Image -->
+<div id="surahImage">
+    <img src="surah.png" alt=" Surah Al-shams Image">
+
+    <!-- Divs for each highlighted part of the image (Ayahs) -->
+    <div class="ayah" id="ayah1" style="top: 10%; left: 22%; width: 58%; height: 7%;" data-start="0"></div>
+    
+    <div class="ayah" id="ayah2" style="top: 19%; left: 61%; width: 35%; height: 6%;" data-start="6"></div>
+    
+    <div class="ayah" id="ayah3" style="top: 19%; left: 24%; width:32%; height: 6%;" data-start="8"></div>
+    
+    <div class="ayah" id="ayah4" style="top: 19%; left: 5%; width: 15%; height: 6%;" data-start="8"></div>
+    <div class="ayah" id="ayah5" style="top: 28%; left: 71%; width: 25%; height: 6%;" data-start="11"></div>
+    
+    <div class="ayah" id="ayah6" style="top: 28%; left: 33%; width: 37%; height: 6%;" data-start="11"></div>
+    <div class="ayah" id="ayah7" style="top: 28%; left: 4%; width: 25%; height: 6%;" data-start="14"></div>
+    
+    <div class="ayah" id="ayah8" style="top: 37%; left: 83%; width: 13%; height: 6%;" data-start="14"></div>
+    <div class="ayah" id="ayah9" style="top: 37%; left: 42%; width: 40%; height: 6%;" data-start="14"></div>
+    
+    <div class="ayah" id="ayah10" style="top: 37%; left: 9%; width: 30%; height: 6%;" data-start="14"></div>
+    <div class="ayah" id="ayah11" style="top: 46%; left: 49%; width: 47%; height: 6%;" data-start="14"></div>
+    
+    <div class="ayah" id="ayah12" style="top: 46%; left: 9%; width: 35%; height: 6%;" data-start="14"></div>
+    
+    <div class="ayah" id="ayah13" style="top: 55%; left: 53%; width: 42%; height: 6%;" data-start="14"></div>
+    <div class="ayah" id="ayah14" style="top: 55%; left: 9%; width: 41%; height: 6%;" data-start="14"></div>
+    
+    <div class="ayah" id="ayah15" style="top: 64%; left: 60%; width: 35%; height: 6%;" data-start="14"></div>
+    <div class="ayah" id="ayah16" style="top: 64%; left: 5%; width: 51%; height: 6%;" data-start="14"></div>
+    
+    <div class="ayah" id="ayah17" style="top: 72%; left: 70%; width: 26%; height: 6%;" data-start="14"></div>
+    
+    <div class="ayah" id="ayah18" style="top: 72%; left: 5%; width: 61%; height: 6%;" data-start="14"></div>
+    
+    <div class="ayah" id="ayah19" style="top: 80%; left: 34%; width: 62%; height: 7%;" data-start="14"></div>
+
+    <div class="ayah" id="ayah20" style="top: 80%; left: 4%; width: 23%; height: 7%;" data-start="14"></div>
+
+    <div class="ayah" id="ayah21" style="top: 90%; left: 44%; width: 16%; height: 7%;" data-start="14"></div>
+    
+</div>
+
+
+
+
+<audio id="audioElement" src="091.mp3"></audio>
+
+<script>
+    const audio = document.getElementById('audioElement');
+    const playPauseBtn = document.getElementById('playPauseBtn');
+    const seekBar = document.getElementById('seekBar');
+    const repeatToggle = document.getElementById('repeatToggle');
+
+
+    const ayahTimings = [
+    { start: 0.000, end: 5.200, ayahs: ['ayah1'] },
+    { start: 5.400, end: 8.200, ayahs: ['ayah2'] },
+    { start: 8.400, end: 12.000, ayahs: ['ayah3'] },
+    { start: 12.200 , end: 16.200, ayahs: ['ayah4','ayah5'] },
+    { start: 16.300, end: 19.800, ayahs: [ 'ayah6'] },
+    { start: 20.00, end: 25.000, ayahs: ['ayah7','ayah8'] },
+    { start: 25.200, end: 28.000, ayahs: ['ayah9'] },
+    { start: 28.200, end: 32.700, ayahs: ['ayah10'] },
+    { start: 32.750, end: 37.700, ayahs: ['ayah11'] },
+    { start: 37.800, end: 41.700, ayahs: ['ayah12'] },
+    { start: 41.800, end: 46.200, ayahs: ['ayah13'] },
+    { start: 46.250, end: 50.200, ayahs: ['ayah14'] },
+    { start: 50.250, end: 53.900, ayahs: ['ayah15'] },
+    { start: 53.900, end: 61.000, ayahs: ['ayah16', 'ayah17'] },
+    { start: 61.200, end: 71.600, ayahs: ['ayah18', 'ayah19'] },
+    { start: 71.600, end: 76.000, ayahs: ['ayah20', 'ayah21'] },
+  
+   
+
+];
+
+    let currentAyahIndex = 0;
+    let isAyahEnding = false;
+
+    function highlightAyah(currentTime) {
+        document.querySelectorAll('.ayah').forEach(el => el.style.backgroundColor = 'transparent');
+
+        ayahTimings.forEach((timing) => {
+            if (currentTime >= timing.start && currentTime < timing.end) {
+                timing.ayahs.forEach(ayah => {
+                    document.getElementById(ayah).style.backgroundColor = 'rgba(255, 255, 0, 0.5)';
+                });
+            }
+        });
+    }
+
+    function playAyah(index) {
+        currentAyahIndex = index;
+        audio.currentTime = ayahTimings[index].start;
+        audio.play();
+        highlightAyah(audio.currentTime);
+        playPauseBtn.textContent = 'Pause';
+        isAyahEnding = false;
+    }
+
+    function handleAyahEnd() {
+        if (repeatToggle.checked) {
+            playAyah(currentAyahIndex);
+        } else if (currentAyahIndex < ayahTimings.length - 1) {
+            currentAyahIndex++;
+            playAyah(currentAyahIndex);
+        } else {
+            audio.pause();
+            playPauseBtn.textContent = 'Play';
+            currentAyahIndex = 0;
+            audio.currentTime = 0;
+            highlightAyah(audio.currentTime);
+        }
+    }
+
+    audio.addEventListener('timeupdate', () => {
+        seekBar.value = (audio.currentTime / audio.duration) * 100;
+        highlightAyah(audio.currentTime);
+
+        if (audio.currentTime >= ayahTimings[currentAyahIndex].end) {
+            if (!isAyahEnding) {
+                isAyahEnding = true;
+                handleAyahEnd();
+            }
+        } else {
+            isAyahEnding = false;
+        }
+    });
+
+    document.querySelectorAll('.ayah').forEach((ayah) => {
+        ayah.addEventListener('click', () => {
+            const clickedAyahId = ayah.id;
+            const index = ayahTimings.findIndex(timing => timing.ayahs.includes(clickedAyahId));
+            if (index !== -1) {
+                playAyah(index);
+            }
+        });
+    });
+
+    playPauseBtn.addEventListener('click', () => {
+        if (audio.paused) {
+            audio.play();
+            playPauseBtn.textContent = 'Pause';
+        } else {
+            audio.pause();
+            playPauseBtn.textContent = 'Play';
+        }
+    });
+
+    seekBar.addEventListener('input', () => {
+        const time = (seekBar.value / 100) * audio.duration;
+        audio.currentTime = time;
+        highlightAyah(time);
+        isAyahEnding = false;
+    });
+
+    audio.addEventListener('ended', () => {
+        if (!repeatToggle.checked) {
+            playPauseBtn.textContent = 'Play';
+            seekBar.value = 0;
+            currentAyahIndex = 0;
+            highlightAyah(0);
+        }
+    });
+
+    highlightAyah(0);
+</script>
+
+</body>
+</html>
